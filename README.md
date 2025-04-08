@@ -14,13 +14,13 @@
 - Ücretsiz bir API
 
 ## Sayfalar
--hakkımda.html
--cv.html
--memleket.html
--mirasimiz.html
--ilgi_alanlarim.html
--login.html
--iletisim.html
+- hakkımda.html
+- cv.html
+- memleket.html
+- mirasimiz.html
+- ilgi_alanlarim.html
+- login.html
+- iletisim.html
 
 
 
