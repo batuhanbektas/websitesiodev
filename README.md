@@ -29,7 +29,7 @@
 
 ## Hazırlayan 
 
-Ad Soyad: Batuhan Bektaş
-Öğrenci NO: G231210379
-Ders: Web Teknolojileri
-Şube: 2A
+- Ad Soyad: Batuhan Bektaş
+- Öğrenci NO: G231210379
+- Ders: Web Teknolojileri
+- Şube: 2A
