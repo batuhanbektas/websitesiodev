@@ -23,9 +23,7 @@
 
 ## Github Linki
 
-
-
-
+- https://github.com/batuhanbektas/websitesiodev
 
 ## Hazırlayan 
 
