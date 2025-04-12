@@ -14,9 +14,9 @@
 - Ücretsiz bir API
 
 ## Sayfalar
-- hakkımda.html
+- index.html
 - cv.html
-- memleket.html
+- sehrim.html
 - mirasimiz.html
 - ilgi_alanlarim.html
 - login.html
