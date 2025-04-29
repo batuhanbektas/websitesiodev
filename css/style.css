@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    background-color: #a8e4f6; 
+}
+nav ul.menu {
+    list-style-type: none; 
+    background-color: #397ee6; 
+    overflow: hidden; 
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul.menu li {
+    display: inline-block;
+}
+
+nav ul.menu li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 14px 60px;
+    background-color: #555;
+    transition: background-color 0.5s ease;
+}
+
+nav ul.menu li a:hover {
+    background-color: #000000; 
+}
+
+header, main, footer {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #397ee6  ;
+    color: white;
+    padding: 15px  0;
+}
+
+ul:not(.menu) {
+    list-style-position: inside;
+    text-align: left;
+    margin: 0 auto;
+    padding: 5px 0 5px 200px; 
+    max-width: 600px;
+}

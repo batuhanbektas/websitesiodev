@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <style>
-        body {
-            font-size: 20px;
-            }
-            </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+   
+            
     <meta charset="UTF-8">
     <title>Şehrim</title>
 </head>
 <body>  
     <nav>
-        <ul>
+        <ul class="menu">
             <li><a href="index.html">Hakkımda</a></li>
             <li><a href="cv.html">Özgeçmiş</a></li>
             <li><a href="sehrim.html">Şehrim</a></li>
@@ -24,6 +23,43 @@
     <header>
         <h1>İstanbul – Medeniyetlerin Buluşma Noktası</h1>   
     </header>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div id="istanbulSlider" class="carousel slide" data-bs-ride="carousel" style="width: 40%; margin: auto; margin-top: 30px;">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="https://www.ayasofya.gov.tr/">
+          <img src="images/ayasofya.jpg" class="d-block w-100" alt="Ayasofya" style="height: 400px; object-fit: cover;">
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="https://tr.wikipedia.org/wiki/Sultanahmet_Camii">
+          <img src="images/sultanahmet.jpg" class="d-block w-100" alt="Sultanahmet Camii" style="height: 400px; object-fit: cover;">
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="https://tr.wikipedia.org/wiki/Topkap%C4%B1_Saray%C4%B1">
+          <img src="images/topkapi.jpg" class="d-block w-100" alt="Topkapı Sarayı"style="height: 400px; object-fit: cover;">
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="https://tr.wikipedia.org/wiki/Galata_Kulesi">
+          <img src="images/galata.jpg" class="d-block w-100" alt="Galata Kulesi" style="height: 400px; object-fit: cover;">
+        </a>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#istanbulSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#istanbulSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+
     <main>
         <section>
             <h2>🏙️ Genel Bilgi</h2>
@@ -42,24 +78,24 @@
         <section>
             <h2>🕌 Önemli Yapılar</h2>
             <ul>
-                <il><b>Ayasofya:</b> Bizans döneminde kilise, Osmanlı döneminde cami olarak kullanılan ve günümüzde müze olan tarihi yapıdır. <!--1-->
-                </il>
+                <li><b>Ayasofya:</b> Bizans döneminde kilise, Osmanlı döneminde cami olarak kullanılan ve günümüzde müze olan tarihi yapıdır. <!--1-->
+                </li>
                 <br><br>
 
-                <il><b>Sultanahmet Camii:</b> Mavi Camii olarak da bilinen bu cami, Osmanlı mimarisinin şaheserlerinden biridir.    <!--2-->
-                </il>
+                <li><b>Sultanahmet Camii:</b> Mavi Camii olarak da bilinen bu cami, Osmanlı mimarisinin şaheserlerinden biridir.    <!--2-->
+                </li>
                 <br><br>  
 
-                <il><b>Topkapı Sarayı:</b> Osmanlı padişahlarının yüzyıllarca yaşadığı saraydır.    <!--3-->
-                </il>
+                <li><b>Topkapı Sarayı:</b> Osmanlı padişahlarının yüzyıllarca yaşadığı saraydır.    <!--3-->
+                </li>
                 <br><br>   
                                                                                                                             
-                <il><b>Galata Kulesi:</b>  İstanbul’un panoramik manzarasını sunan tarihi bir kuledir.  <!--4-->
-                </il>
+                <li><b>Galata Kulesi:</b>  İstanbul’un panoramik manzarasını sunan tarihi bir kuledir.  <!--4-->
+                </li>
                 <br><br>
 
-                <il><b>Kız Kulesi:</b> Boğaz’ın ortasında bulunan romantik ve gizemli yapıdır.      <!--5-->
-                </il>
+                <li><b>Kız Kulesi:</b> Boğaz’ın ortasında bulunan romantik ve gizemli yapıdır.      <!--5-->
+                </li>
                 <br><br>
 
             </ul>
@@ -90,13 +126,15 @@
 
         <section>
             <h2>📸 Gezilecek Yerler</h2>
-            <li>Kapalıçarşı</li>
-            <li>Mısır Çarşısı</li> 
-            <li>İstiklal Caddesi</li>
-            <li>Taksim Meydanı</li>
-            <li>Emirgan Korusu</li>
-            <li>Pierre Loti Tepesi</li>
-        </section>
+            <ul>
+              <li>Kapalıçarşı</li>
+              <li>Mısır Çarşısı</li> 
+              <li>İstiklal Caddesi</li>
+              <li>Taksim Meydanı</li>
+              <li>Emirgan Korusu</li>
+              <li>Pierre Loti Tepesi</li>
+            </ul>
+          </section>
     </main>
 
     <footer>
