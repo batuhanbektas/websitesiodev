@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>İletişim</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.15/dist/vue.global.prod.js"></script>
+</head>
+<body>
+
+<nav>
+    <ul class="menu">
+        <li><a href="index.html">Hakkımda</a></li>
+        <li><a href="cv.html">Özgeçmiş</a></li>
+        <li><a href="sehrim.html">Şehrim</a></li>
+        <li><a href="ilgialanlarim.html">İlgilendiğim Alanlar</a></li>
+        <li><a href="mirasimiz.html">Mirasımız</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="login.html">Giriş</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h2>İletişim Formu</h2>
+
+    <div id="app">
+    <form id="iletisimForm" @submit.prevent="kontrolEt" action="iletisim.php" method="post">
+        <div class="form-group">
+            <label for="ad">Ad Soyad:</label><br>
+            <input type="text" id="ad" name="ad" v-model="ad">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-Posta:</label><br>
+            <input type="text" id="email" name="email" v-model="email">
+          </div>
+          
+          <div class="form-group">
+            <label for="tel">Telefon:</label><br>
+            <input type="tel" id="tel" name="tel" v-model="tel">
+          </div>
+
+        <div class="form-group">
+            <label>Cinsiyet:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="cinsiyet" value="erkek"> Erkek</label>
+              <label><input type="radio" name="cinsiyet" value="kadin"> Kadın</label>
+            </div>
+        </div>
+          
+        <div class="form-group">
+            <label>İlgi Alanları:</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="ilgi" value="yazilim"> Yazılım</label>
+              <label><input type="checkbox" name="ilgi" value="oyun"> Oyun</label>
+              <label><input type="checkbox" name="ilgi" value="spor"> Spor</label>
+            </div>
+        </div>
+          
+
+        <label for="sehir">Şehir:</label><br>
+        <select name="sehir" id="sehir" v-model="sehir">
+            <option value="">Seçiniz</option>
+            <option value="İstanbul">İstanbul</option>
+            <option value="Ankara">Ankara</option>
+            <option value="Sakarya">Sakarya</option>
+            <option value="İzmir">İzmir</option>
+        </select><br><br>
+
+        <label for="mesaj">Mesaj:</label><br>
+        <textarea id="mesaj" name="mesaj" rows="6" cols="50" v-model="mesaj"></textarea><br><br>
+
+        <button type="button" onclick="jsKontrol()">JS ile Kontrol</button>
+        <button type="submit">Vue.js ile Kontrol</button>
+        <button type="reset">Temizle</button>
+    </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Batuhan Web Projesi</p>
+</footer>
+
+<script>
+function jsKontrol() {
+    const ad = document.getElementById("ad").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const tel = document.getElementById("tel").value.trim();
+    const cinsiyet = document.querySelector('input[name="cinsiyet"]:checked');
+    const ilgi = document.querySelectorAll('input[name="ilgi[]"]:checked');
+    const sehir = document.getElementById("sehir").value;
+    const mesaj = document.getElementById("mesaj").value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const telPattern = /^[0-9]+$/;
+
+    let hataListesi = [];
+
+    if (ad === "") hataListesi.push("• Ad Soyad boş bırakılamaz.");
+    if (email === "") hataListesi.push("• E-posta boş bırakılamaz.");
+    else if (!emailPattern.test(email)) hataListesi.push("• Geçerli bir e-posta girin.");
+
+    if (tel === "") hataListesi.push("• Telefon boş bırakılamaz.");
+    else if (!telPattern.test(tel)) hataListesi.push("• Telefon sadece rakamlardan oluşmalıdır.");
+    else if (tel.length !== 10) hataListesi.push("• Telefon numarası 10 haneli olmalıdır.");
+
+    if (!cinsiyet) hataListesi.push("• Cinsiyet seçilmelidir.");
+    if (ilgi.length === 0) hataListesi.push("• En az bir ilgi alanı seçilmelidir.");
+    if (sehir === "") hataListesi.push("• Şehir seçilmelidir.");
+    if (mesaj === "") hataListesi.push("• Mesaj boş bırakılamaz.");
+
+    if (hataListesi.length > 0) {
+        alert(hataListesi.join("\\n"));
+    } else {
+        alert("Tüm kontroller başarılı! Form gönderilebilir.");
+    }
+}
+</script>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      ad: '',
+      email: '',
+      tel: '',
+      cinsiyet: '',
+      ilgi: [],
+      sehir: '',
+      mesaj: ''
+    };
+  },
+  methods: {
+    kontrolEt() {
+      let hatalar = [];
+
+      if (this.ad.trim() === '') hatalar.push("• Ad Soyad boş bırakılamaz.");
+      if (this.email.trim() === '') hatalar.push("• E-posta boş bırakılamaz.");
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)) hatalar.push("• Geçerli bir e-posta girin.");
+
+      if (this.tel.trim() === '') hatalar.push("• Telefon boş bırakılamaz.");
+      else if (!/^[0-9]+$/.test(this.tel)) hatalar.push("• Telefon sadece rakamlardan oluşmalıdır.");
+      else if (this.tel.length !== 10) hatalar.push("• Telefon 10 haneli olmalıdır.");
+
+      if (this.cinsiyet === '') hatalar.push("• Cinsiyet seçilmelidir.");
+      if (this.ilgi.length === 0) hatalar.push("• En az bir ilgi alanı seçilmelidir.");
+      if (this.sehir === '') hatalar.push("• Şehir seçilmelidir.");
+      if (this.mesaj.trim() === '') hatalar.push("• Mesaj boş bırakılamaz.");
+
+      if (hatalar.length > 0) {
+    alert(hatalar.join("\\n"));
+} else {
+    alert("Vue.js doğrulaması başarılı! Form gönderiliyor...");
+    document.getElementById("iletisimForm").submit();
+}
+
+    }
+  }
+}).mount('#app');
+</script>
+
+</body>
+</html>

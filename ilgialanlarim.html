@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <title>İlgilendiğim Alanlar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
 
-    <nav>
-        <ul class="menu">
-            <li><a href="index.html">Hakkımda</a></li>
-            <li><a href="cv.html">Özgeçmiş</a></li>
-            <li><a href="sehrim.html">Şehrim</a></li>
-            <li><a href="ilgialanlarim.html">İlgilendiğim Alanlar</a></li>
-            <li><a href="mirasimiz.html">Mirasımız</a></li>
-            <li><a href="iletisim.html">İletişim</a></li>
-            <li><a href="login.html">Giriş</a></li>
-        </ul>
-    </nav>
+<nav>
+    <ul class="menu">
+        <li><a href="index.html">Hakkımda</a></li>
+        <li><a href="cv.html">Özgeçmiş</a></li>
+        <li><a href="sehrim.html">Şehrim</a></li>
+        <li><a href="ilgialanlarim.html">İlgilendiğim Alanlar</a></li>
+        <li><a href="mirasimiz.html">Mirasımız</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="login.html">Giriş</a></li>
+    </ul>
+</nav>
 
 <header>
     <h1>İlgilendiğim Alanlar</h1>
 </header>
+
 <main>
     <section>
         <h2>İlgilendiğim Alanlar</h2>
         <ul>
             <li><a href="#satranç">Satranç</a></li>
-            <li><a href="#bilgisayar"> Bilgisayar oyunları</a></li>
+            <li><a href="#bilgisayar">Bilgisayar oyunları</a></li>
             <li><a href="#film">Filmler</a></li>
         </ul>
     </section>
@@ -35,7 +37,7 @@
         <h2>Proje Örnekleri</h2>
         <p>Henüz proje örneğim yok ama ileride yapmayı düşündüğüm projeler:</p>
         <ul>
-            <li>Gerçek fizik kurallarını baz alan bir astronomi oyununa bir mod tasarlamak istiyorum</li>
+            <li>Gerçek fizik kurallarını baz alan bir astronomi oyununa mod tasarlamak istiyorum</li>
             <li>Çok basit bir korku oyunu yapmayı hedefliyorum.</li>
         </ul>
     </section>
@@ -43,12 +45,9 @@
     <section>
         <h2 id="satranç">Satranç</h2>
         <p>Satranç, iki oyuncu arasında oynanan bir strateji oyunudur. Oyun tahtası 64 kareden oluşur ve her oyuncunun 16 taşı vardır. Amaç, rakip oyuncunun şahını mat etmektir.</p>
-        Satranç oynamak için birçok online platform bulunmaktadır. Benim favori platformum <a href="https://www.chess.com/home">Chess.com</a>. 
-        Bu sitede hem oyun oynayabilir hem de eğitim materyallerine erişebilirsiniz.
-        Ayrıca, bu sitede bulmacalarla ve çeşitli oyum modlarıyla da eğlenebilirsiniz.
-        Satranç'ta iyi olmak için bazı açılışları bilmek işinize gelicektir.
-       
+        Favori platformum: <a href="https://www.chess.com/home">Chess.com</a>
     </section>
+
     <section>
         <h2 id="bilgisayar">Bilgisayar Oyunları</h2>
         <ul>
@@ -58,9 +57,10 @@
             <li>The Elder Scrolls V: Skyrim</li>
         </ul>
     </section>
+
     <section>
-            <h2 id="film">Filmler</h2>
-            <p>Bu bölümde yakında popüler filmleri gösteren bir API entegrasyonu olacak.</p>
+        <h2 id="film">Filmler</h2>
+        <div id="film-listesi" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;"></div>
     </section>
 </main>
 
@@ -68,12 +68,42 @@
     <p>&copy; 2025 Batuhan Web Projesi</p>
 </footer>
 
+<script>
+const API_KEY = "0d2169c11843afed90c5c36de7dd0765"; 
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=tr-TR&page=1`;
+const imageBase = "https://image.tmdb.org/t/p/w200";
+const fallbackImage = "https://via.placeholder.com/200x300?text=No+Image";
 
+fetch(API_URL)
+  .then(res => {
+    if (!res.ok) throw new Error(`HTTP Hatası: ${res.status}`);
+    return res.json();
+  })
+  .then(data => {
+    const container = document.getElementById("film-listesi");
+    if (!data.results) {
+      container.innerHTML = "<p>Film verisi alınamadı.</p>";
+      return;
+    }
+
+    data.results.slice(0, 6).forEach(film => {
+      const imagePath = film.poster_path ? `${imageBase}${film.poster_path}` : fallbackImage;
+      const div = document.createElement("div");
+      div.style.width = "200px";
+      div.style.textAlign = "center";
+      div.innerHTML = `
+        <img src="${imagePath}" alt="${film.title}" style="width:100%; height:auto;">
+        <h4><strong>${film.title}</strong></h4>
+        <p>⭐ ${film.vote_average}</p>
+      `;
+      container.appendChild(div);
+    });
+  })
+  .catch(err => {
+    console.error("Film verisi alınamadı:", err);
+    document.getElementById("film-listesi").innerHTML = "<p>Film verisi yüklenemedi.</p>";
+  });
+</script>
 
 </body>
-
-
-
-
-
 </html>

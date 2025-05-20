@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function validateForm() {
+            const email = document.forms["loginForm"]["email"].value;
+            const password = document.forms["loginForm"]["password"].value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@ogr\.sakarya\.edu\.tr$/;
+
+            if (email === "" || password === "") {
+                alert("Kullanıcı adı ve şifre boş bırakılamaz.");
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert("Kullanıcı adı ogr.sakarya.edu.tr uzantılı geçerli bir e-posta olmalıdır.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<nav>
+    <ul class="menu">
+        <li><a href="index.html">Hakkımda</a></li>
+        <li><a href="cv.html">Özgeçmiş</a></li>
+        <li><a href="sehrim.html">Şehrim</a></li>
+        <li><a href="ilgialanlarim.html">İlgilendiğim Alanlar</a></li>
+        <li><a href="mirasimiz.html">Mirasımız</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="login.html">Giriş</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h2>Giriş Yap</h2>
+    <form name="loginForm" action="login.php" method="post" onsubmit="return validateForm();">
+        <label for="email">Kullanıcı Adı (E-posta):</label><br>
+        <input type="text" id="email" name="email" placeholder="b********@ogr.sakarya.edu.tr"><br><br>
+
+        <label for="password">Şifre:</label><br>
+        <input type="password" id="password" name="password" placeholder="b*******"><br><br>
+
+        <input type="submit" value="Giriş Yap">
+    </form>
+
+    
+</main>
+
+
+<footer>
+    <p>&copy; 2025 Batuhan Web Projesi</p>
+</footer>
+
+<script>
+    
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "1") {
+        alert("Hatalı kullanıcı adı veya şifre girdiniz!");
+    }
+</script>
+
+</body>
+</html>
