@@ -1,5 +1,4 @@
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo "Bu sayfa sadece form gönderimi sonrası görüntülenebilir.";
     exit;
@@ -9,15 +8,14 @@ function temizle($veri) {
     return htmlspecialchars(trim($veri));
 }
 
-
 $ad = temizle($_POST['ad']);
 $email = temizle($_POST['email']);
 $tel = temizle($_POST['tel']);
 $cinsiyet = isset($_POST['cinsiyet']) ? temizle($_POST['cinsiyet']) : 'Seçilmedi';
-$ilgi = isset($_POST['ilgi']) ? array_map('temizle', $_POST['ilgi']) : [];
+$ilgiHam = $_POST['ilgi'] ?? [];
+$ilgi = is_array($ilgiHam) ? array_map('temizle', $ilgiHam) : [temizle($ilgiHam)];
 $sehir = temizle($_POST['sehir']);
 $mesaj = nl2br(temizle($_POST['mesaj']));
-
 
 echo "<h2>Gönderilen İletişim Bilgileri</h2>";
 echo "<strong>Ad Soyad:</strong> $ad<br>";

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -28,35 +29,34 @@
         <div class="form-group">
             <label for="ad">Ad Soyad:</label><br>
             <input type="text" id="ad" name="ad" v-model="ad">
-          </div>
-          
-          <div class="form-group">
+        </div>
+
+        <div class="form-group">
             <label for="email">E-Posta:</label><br>
             <input type="text" id="email" name="email" v-model="email">
-          </div>
-          
-          <div class="form-group">
+        </div>
+
+        <div class="form-group">
             <label for="tel">Telefon:</label><br>
             <input type="tel" id="tel" name="tel" v-model="tel">
-          </div>
+        </div>
 
         <div class="form-group">
             <label>Cinsiyet:</label>
             <div class="radio-group">
-              <label><input type="radio" name="cinsiyet" value="erkek"> Erkek</label>
-              <label><input type="radio" name="cinsiyet" value="kadin"> Kadın</label>
+                <label><input type="radio" name="cinsiyet" value="erkek" v-model="cinsiyet"> Erkek</label>
+                <label><input type="radio" name="cinsiyet" value="kadin" v-model="cinsiyet"> Kadın</label>
             </div>
         </div>
-          
+
         <div class="form-group">
             <label>İlgi Alanları:</label>
             <div class="checkbox-group">
-              <label><input type="checkbox" name="ilgi" value="yazilim"> Yazılım</label>
-              <label><input type="checkbox" name="ilgi" value="oyun"> Oyun</label>
-              <label><input type="checkbox" name="ilgi" value="spor"> Spor</label>
+                <label><input type="checkbox" name="ilgi" value="yazilim" v-model="ilgi"> Yazılım</label>
+                <label><input type="checkbox" name="ilgi" value="oyun" v-model="ilgi"> Oyun</label>
+                <label><input type="checkbox" name="ilgi" value="spor" v-model="ilgi"> Spor</label>
             </div>
         </div>
-          
 
         <label for="sehir">Şehir:</label><br>
         <select name="sehir" id="sehir" v-model="sehir">
@@ -87,7 +87,7 @@ function jsKontrol() {
     const email = document.getElementById("email").value.trim();
     const tel = document.getElementById("tel").value.trim();
     const cinsiyet = document.querySelector('input[name="cinsiyet"]:checked');
-    const ilgi = document.querySelectorAll('input[name="ilgi[]"]:checked');
+    const ilgi = document.querySelectorAll('input[name="ilgi"]:checked');
     const sehir = document.getElementById("sehir").value;
     const mesaj = document.getElementById("mesaj").value.trim();
 
@@ -110,7 +110,7 @@ function jsKontrol() {
     if (mesaj === "") hataListesi.push("• Mesaj boş bırakılamaz.");
 
     if (hataListesi.length > 0) {
-        alert(hataListesi.join("\\n"));
+        alert(hataListesi.join("\n"));
     } else {
         alert("Tüm kontroller başarılı! Form gönderilebilir.");
     }
@@ -150,12 +150,11 @@ createApp({
       if (this.mesaj.trim() === '') hatalar.push("• Mesaj boş bırakılamaz.");
 
       if (hatalar.length > 0) {
-    alert(hatalar.join("\\n"));
-} else {
-    alert("Vue.js doğrulaması başarılı! Form gönderiliyor...");
-    document.getElementById("iletisimForm").submit();
-}
-
+        alert(hatalar.join("\n"));
+      } else {
+        alert("Vue.js doğrulaması başarılı! Form gönderiliyor...");
+        document.getElementById("iletisimForm").submit();
+      }
     }
   }
 }).mount('#app');

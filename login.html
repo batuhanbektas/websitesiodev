@@ -60,8 +60,8 @@
 
 <script>
     
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("error") === "1") {
+    const sorgu = new URLSearchParams(window.location.search);
+    if (sorgu.get("error") === "1") {
         alert("Hatalı kullanıcı adı veya şifre girdiniz!");
     }
 </script>
